@@ -135,7 +135,7 @@ module Danger
         if inline_mode && result.location
           warn(result.message, sticky: false, file: result.location.file_name, line: result.location.line)
         else
-          warn(result.message, sticky: false)
+          warn(result.message, sticky: true)
         end
       end
       errors(xcode_summary).each do |result|
