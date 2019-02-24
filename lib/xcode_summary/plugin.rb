@@ -209,7 +209,7 @@ module Danger
 
     def format_path(path)
       clean_path, line = parse_filename(path)
-      path = clean_path + '#L' + line if clean_path && line
+      path = clean_path + '#L ' + line if clean_path && line
 
       # Pick a Dangerfile plugin for a chosen request_source
       # based on https://github.com/danger/danger/blob/master/lib/danger/plugin_support/plugin.rb#L31
@@ -219,7 +219,7 @@ module Danger
       if plugin
         plugin.html_link(path)
       else
-        clean_path
+        path
       end
     end
 
@@ -252,7 +252,7 @@ module Danger
 
       path_link = format_path(path)
 
-      warning = "**#{path_link}**: #{escape_reason(h[:reason])}"
+      warning = "**#{path_link}**: `#{escape_reason(h[:reason])}`\n"
       if h[:line] && !h[:line].empty?
         "#{warning}" \
           "\n```\n" \
