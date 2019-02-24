@@ -255,7 +255,7 @@ module Danger
       warning = "**#{path_link}**: `#{escape_reason(h[:reason])}`"
       if h[:line] && !h[:line].empty?
         "#{warning}\n" \
-          "`#{h[:line]}`" \
+          "`#{h[:line].strip}`" \
       else
         warning
       end
